@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Capital Diferido de Vida - Actuarial 1</title>
+  <meta name="description" content="Capital Diferido de Vida - Teoría Actuarial de los Seguros Personales" />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<main>
+  <div class="back-link">
+    <a href="actuarial-1.html">← Volver a Actuarial 1</a>
+  </div>
+
+  <section class="prose">
+    <h1 style="margin-bottom: 0.5rem;">Capital Diferido de Vida</h1>
+
+    <div class="collapsible-description">
+      <button class="collapsible-toggle">
+        <span class="toggle-text">DESCRIPCIÓN</span>
+        <span class="toggle-icon">▼</span>
+      </button>
+      <div class="collapsible-content">
+        <p>
+          El <strong>Capital Diferido de Vida</strong> es un contrato de seguros en el cual la aseguradora se compromete a pagar un capital determinado al asegurado si éste llega vivo a una edad o momento predeterminado. Se trata de un seguro puro de supervivencia, donde el evento asegurado es que la persona sobreviva.
+        </p>
+
+        <p>
+          Notación: Para una persona de edad <code>x</code>, el capital diferido de vida a <code>t</code> años se denota como <code>E(x;t)</code>, donde:
+        </p>
+
+        <ul class="theory-list">
+          <li><code>x</code> = edad actual del asegurado</li>
+          <li><code>t</code> = plazo de diferimiento (años)</li>
+          <li><code>E(x;t)</code> = Valor actual actuarial del capital</li>
+        </ul>
+
+        <p>
+          <strong>Significado actuarial:</strong> <code>E(x;t)</code> representa el valor presente (factor de actualización actuarial) de una unidad monetaria pagadera al asegurado de edad <code>x</code> al cabo de <code>t</code> años, condicionado a que sobreviva.
+        </p>
+
+        <h4>Fórmulas fundamentales</h4>
+
+        <div class="formula">
+          $$E(x;t) = v^t \cdot p(x;t)$$
+        </div>
+
+        <p>Donde:</p>
+        <ul class="theory-list">
+          <li><code>v<sup>t</sup></code> = Factor de descuento financiero: <code>(1+i)<sup>-t</sup></code> (valor del dinero en el tiempo)</li>
+          <li><code>p(x;t)</code> = Probabilidad de supervivencia: probabilidad de que una persona de edad <code>x</code> sobreviva <code>t</code> años</li>
+        </ul>
+
+        <p>
+          Forma alternativa en función de las funciones de tabla de mortalidad:
+        </p>
+
+        <div class="formula">
+          $$E(x;t) = \frac{l(x+t)}{l(x)} \cdot v^t$$
+        </div>
+
+        <p>
+          O bien, usando números de conmutación (para cálculos prácticos):
+        </p>
+
+        <div class="formula">
+          $$E(x;t) = \frac{D(x+t)}{D(x)}$$
+        </div>
+
+        <p>Donde <code>D(z) = v<sup>z</sup> · l(z)</code> es el número de conmutación.</p>
+
+        <h4>Propiedades y relaciones</h4>
+
+        <p><strong>Valores singulares:</strong></p>
+
+        <div class="formula">
+          $$E(x;0) = 1 \quad \text{(sin diferimiento)}$$
+          $$0 < E(x;t) < 1 \quad \text{(para } t > 0\text{)}$$
+          $$E(x;\omega - x) = 0 \quad \text{(al límite de la tabla)}$$
+        </div>
+
+        <p><strong>Propiedad multiplicativa (recurrencia):</strong></p>
+
+        <div class="formula">
+          $$E(x;a+b) = E(x;a) \cdot E(x+a;b)$$
+        </div>
+
+        <h4>Interpretación económica</h4>
+
+        <p>
+          <code>E(x;t)</code> representa la prima pura única que debe pagar hoy una persona de edad <code>x</code> para asegurar la recepción de una unidad monetaria en <code>t</code> años si sobrevive. Incorpora tanto:
+        </p>
+
+        <ul class="theory-list">
+          <li><strong>Riesgo biométrico:</strong> La probabilidad de no llegar vivo a los <code>x+t</code> años</li>
+          <li><strong>Riesgo financiero:</strong> El valor del dinero a lo largo del tiempo (tasa técnica constante: <code>i</code>)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sección de ejercicios desplegable -->
+    <div class="collapsible-description" style="margin-top: 2.5rem;">
+      <button class="collapsible-toggle">
+        <span class="toggle-text">EJERCICIOS</span>
+        <span class="toggle-icon">▼</span>
+      </button>
+      <div class="collapsible-content">
+
+        <div class="exercise-container">
+          <button class="exercise-toggle">
+            <span class="exercise-title">Ejercicio 1: Cálculo básico de capital diferido</span>
+            <span class="exercise-icon">▼</span>
+          </button>
+          <div class="exercise-content">
+            <div class="exercise-subproblem">
+              <p>
+                Un asegurado de 40 años contrata un seguro que le pagará <code>$100.000</code> cuando cumpla 60 años, si llega con vida.
+                Calcule la prima única pura utilizando los datos que sigue (considere <code>i = 4%</code> anual):
+              </p>
+              <ul>
+                <li><code>l(40) = 95.000</code></li>
+                <li><code>l(60) = 85.000</code></li>
+              </ul>
+              <div class="hint">Recuerde que la prima única es la probabilidad de cobro actualizada por el factor financiero.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exercise-container">
+          <button class="exercise-toggle">
+            <span class="exercise-title">Ejercicio 2: Propiedad multiplicativa</span>
+            <span class="exercise-icon">▼</span>
+          </button>
+          <div class="exercise-content">
+            <div class="exercise-subproblem">
+              <p>
+                Verificar que <code>E(30; 20) = E(30; 10) · E(40; 10)</code> usando la información de la tabla CSO 80
+                (puede obtenerla del material de cátedra).
+              </p>
+              <div class="hint">Esto demuestra la propiedad de descomposición en períodos intermedios.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exercise-container">
+          <button class="exercise-toggle">
+            <span class="exercise-title">Ejercicio 3: Interpretación de componentes</span>
+            <span class="exercise-icon">▼</span>
+          </button>
+          <div class="exercise-content">
+            <div class="exercise-subproblem">
+              <p>
+                Descomponga <code>E(35; 15)</code> en sus dos componentes: factor de descuento financiero <code>v<sup>15</sup></code>
+                y probabilidad de supervivencia <code>p(35; 15)</code>.
+                ¿Cuál de los dos componentes tiene mayor impacto en la disminución del valor?
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <a href="https://github.com/rafa-datri" target="_blank" rel="noopener">github</a>
+</footer>
+
+<script src="../script-collapsible.js"></script>
+</body>
+</html>
