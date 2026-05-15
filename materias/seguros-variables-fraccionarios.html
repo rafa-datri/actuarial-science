@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seguros Variables Fraccionarios - Actuarial 1</title>
+  <meta name="description" content="Seguros Variables y Fraccionarios - Teoría Actuarial" />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<main>
+  <div class="back-link">
+    <a href="actuarial-1.html">← Volver a Actuarial 1</a>
+  </div>
+
+  <section class="prose">
+    <h1 style="margin-bottom: 0.5rem;">Seguros Variables Fraccionarios</h1>
+
+    <!-- Descripción General -->
+    <div class="collapsible-description">
+      <button class="collapsible-toggle">
+        <span class="toggle-text">DESCRIPCIÓN GENERAL</span>
+        <span class="toggle-icon">▼</span>
+      </button>
+      <div class="collapsible-content">
+        <p>
+          Los <strong>Seguros Variables Fraccionarios</strong> son productos donde los capitales asegurados varían sistemáticamente a lo largo del período de cobertura, pudiendo crecer de forma aritmética o geométrica. Se aplican dentro de períodos menores a un año.
+        </p>
+
+        <p>
+          Dos tipos de variación:
+        </p>
+
+        <ul class="theory-list">
+          <li><strong>Variación Interanual:</strong> Los capitales varían año a año</li>
+          <li><strong>Variación Intraanual:</strong> Los capitales varían período a período dentro del año (en fraccionamientos <code>k</code>)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- VIDA INCREASING - Variación Anual -->
+    <div class="collapsible-description" style="margin-top: 2rem;">
+      <button class="collapsible-toggle">
+        <span class="toggle-text">VIDA INCREASING - VARIACIÓN INTERANUAL</span>
+        <span class="toggle-icon">▼</span>
+      </button>
+      <div class="collapsible-content">
+        <p>
+          Renta vitalicia donde el capital aumenta de manera aritmética año a año. Al principio de cada año <code>t</code> el capital crece.
+        </p>
+
+        <h4>Estructura de capitales (adelantados)</h4>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+          <tr style="background: #f5f5f5;">
+            <td style="border: 1px solid #ddd; padding: 0.5rem;"><strong>Año (t)</strong></td>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;"><strong>Capitales por período</strong></td>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;"><strong>VAA</strong></td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">0</td>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">$$\frac{1}{k}; \frac{1}{k}; \ldots; \frac{1}{k}$$</td>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">$$\sum_{s=0}^{k-1} \frac{1}{k} E\left(x;\frac{s}{k}\right)$$</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">1</td>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">$$\frac{2}{k}; \frac{2}{k}; \ldots; \frac{2}{k}$$</td>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">$$\sum_{s=0}^{k-1} \frac{2}{k} E\left(x;1+\frac{s}{k}\right)$$</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">⋮</td>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">⋮</td>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">⋮</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">n-1</td>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">$$\frac{n}{k}; \frac{n}{k}; \ldots; \frac{n}{k}$$</td>
+            <td style="border: 1px solid #ddd; padding: 0.5rem;">$$\sum_{s=0}^{k-1} \frac{n}{k} E\left(x;n-1+\frac{s}{k}\right)$$</td>
+          </tr>
+        </table>
+
+        <h4>Prima Pura Única (PPU)</h4>
+
+        <p>
+          La prima pura única de una renta vitalicia que crece anual y aritméticamente a razón de <code>1/k</code>, inmediata y por <code>n</code> años, se puede expresar como:
+        </p>
+
+        <div class="formula">
+          $$P(x;1) = \sum_{t=0}^{n-1} \sum_{s=0}^{k-1} \frac{t+1}{k} E\left(x;t+\frac{s}{k}\right)$$
+        </div>
+
+        <h4>Desarrollo usando DUE</h4>
+
+        <p>
+          Aplicamos la interpolación lineal del capital diferido de vida:
+        </p>
+
+        <div class="formula">
+          $$E\left(x;t+\frac{s}{k}\right) = E(x;t) \left(1 - \frac{s}{k}\right) + E(x;t+1) \frac{s}{k}$$
+        </div>
+
+        <p>
+          Factorizamos usando la recurrencia <code>E(x;t+1) = E(x;t)E(x+t;1)</code>:
+        </p>
+
+        <div class="formula">
+          $$E\left(x;t+\frac{s}{k}\right) = E(x;t) \left[1 - \frac{s}{k} \left(1 - E(x+t;1)\right)\right]$$
+        </div>
+
+        <p>
+          Sustituyendo en la PPU:
+        </p>
+
+        <div class="formula">
+          $$P(x;1) = \sum_{t=0}^{n-1} \sum_{s=0}^{k-1} \frac{t+1}{k} E(x;t) \left[1 - \frac{s}{k} \left(1 - E(x+t;1)\right)\right]$$
+        </div>
+
+        <p>
+          Expandimos la expresión factorizada:
+        </p>
+
+        <div class="formula">
+          $$P(x;1) = \sum_{t=0}^{n-1} \sum_{s=0}^{k-1} \frac{t+1}{k} E(x;t) - \sum_{t=0}^{n-1} \sum_{s=0}^{k-1} \frac{t+1}{k} E(x;t) \frac{s}{k} \left(1 - E(x+t;1)\right)$$
+        </div>
+
+        <p>
+          Extraemos los términos constantes de cada suma:
+        </p>
+
+        <div class="formula">
+          $$P(x;1) = \sum_{t=0}^{n-1} (t+1) E(x;t) \sum_{s=0}^{k-1} \frac{1}{k} - \sum_{t=0}^{n-1} (t+1) E(x;t) \left(1 - E(x+t;1)\right) \sum_{s=0}^{k-1} \frac{s}{k^2}$$
+        </div>
+
+        <p>
+          Computamos los sumatorios internos:
+        </p>
+
+        <div class="formula">
+          $$\sum_{s=0}^{k-1} \frac{1}{k} = 1 \quad \text{y} \quad \sum_{s=0}^{k-1} \frac{s}{k^2} = \frac{k-1}{2k}$$
+        </div>
+
+        <div class="formula">
+          $$P(x;1) = \sum_{t=0}^{n-1} (t+1) E(x;t) - \frac{k-1}{2k} \sum_{t=0}^{n-1} (t+1) E(x;t) \left(1 - E(x+t;1)\right)$$
+        </div>
+
+        <p>
+          Factorizamos y expandimos usando <code>E(x;t+1) = E(x;t)E(x+t;1)</code>:
+        </p>
+
+        <div class="formula">
+          $$P(x;1) = \left[1 - \frac{k-1}{2k}\right] \sum_{t=0}^{n-1} (t+1) E(x;t) + \frac{k-1}{2k} \sum_{t=0}^{n-1} (t+1) E(x;t+1)$$
+        </div>
+
+        <div class="formula">
+          $$P(x;1) = \frac{k+1}{2k} \sum_{t=0}^{n-1} (t+1) E(x;t) + \frac{k-1}{2k} \sum_{t=0}^{n-1} (t+1) E(x;t+1)$$
+        </div>
+
+        <p>
+          Por lo tanto:
+        </p>
+
+        <div class="formula">
+          $$P(x;1) = \frac{k+1}{2k} \text{aI}(x;0;n) + \frac{k-1}{2k} \text{aI}(x;1;n)$$
+        </div>
+
+        <p>
+          donde <code>aI(x;0;n)</code> es la renta vitalicia increasing inmediata, y <code>aI(x;1;n)</code> es la renta vitalicia increasing de <code>n</code> posibles pagos diferida 1 año. Este resultado expresa la prima pura única como una combinación ponderada de ambas rentas, con pesos que dependen de la fraccionización <code>k</code>.
+        </p>
+
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <a href="https://github.com/rafa-datri" target="_blank" rel="noopener">github</a>
+</footer>
+
+<script src="../script-collapsible.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+k: cantidad de fraccionamientos en el año.
+q(x;t+s/k;1/k) = probabilidad de que una persona de edad x, sobreviva hasta t+s/k y fallezca entre las edades [x+t+s/k; x+y+(s+1)/k].
+Variación Interanual, los capitales varían año a año.
+Variación Intraanual, los capitales varían período a período, es decir, en cada período fraccionario "k" hay una variación.
+E(x;t+s/k) = Factor de actualización actuarial que trae actuarialmente a t = 0 un capital que se encuentra en t+s/k para una persona de edad "x".
+AI(x;0;n) = Increasing de muerte inmediata (sin diferimiento), donde el incremento del capital unitario es de una unidad año a año.
+Avg(x;0;n;r) = Muerte inmediato con incremento geométrico de 1+r anualmente. El capital comienza en una unidad en t = 0 para luego ir incrementando geométricamente por la razón (1+r).
+Los campos de la notación actuarial son (edad;diferimiento;plazo).
+
+Luego una renta vitalicia diferida en h períodos con n posibles pagos para una persona de edad x será: a(x;0;n)
+
+La E(x;t) tiene dos campos que son edad y plazo, E(x;t) = p(x;t) * power(v;t). Se actualiza el capital en el momento t al momento 0 actuarialmente, porque se actualiza biométricamente p(x;t), y financieramente power(v;t). v es el factor de actualización financiero y se define como 1/(1+i) donde i es la tasa de interés técnica de la aseguradora.

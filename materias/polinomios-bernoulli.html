@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polinomios de Bernoulli - El Repositorio Actuarial</title>
+  <meta name="description" content="Polinomios de Bernoulli - Propiedades y demostraciones" />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .pdf-viewer {
+      margin-top: 1rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      background: #f9f9f9;
+      padding: 0;
+      overflow: hidden;
+    }
+    .pdf-iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<main>
+  <div class="back-link">
+    <a href="analisis-numerico.html">← Volver a Análisis Numérico</a>
+  </div>
+
+  <section class="prose">
+    <h1 style="margin-bottom: 1.5rem;">Polinomios de Bernoulli</h1>
+
+    <!-- Introducción -->
+    <section class="materia-section">
+      <h2 style="font-size: 0.9rem; font-weight: normal; font-family: system-ui, -apple-system, sans-serif; color: #555555; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">Introducción</h2>
+
+      <p>Los polinomios de Bernoulli \(B_v^n(x)\) son una familia de polinomios fundamental en análisis numérico y análisis clásico. Se definen a través de su función generatriz:</p>
+
+      <div class="formula">
+        $$\phi(n;t;x) = \frac{t^n e^{tx}}{(e^t - 1)^n} = \sum_{v=0}^{\infty} \frac{t^v}{v!} B_v^n(x)$$
+      </div>
+
+      <p>donde \(v\) denota el grado del polinomio y \(n\) el orden. Estos polinomios poseen propiedades algebraicas notables que permiten su uso en fórmulas de cuadratura, aproximación numérica de funciones, y aplicaciones en análisis actuarial.</p>
+    </section>
+
+    <!-- Propiedades -->
+    <section class="materia-section">
+      <h2 style="font-size: 0.9rem; font-weight: normal; font-family: system-ui, -apple-system, sans-serif; color: #555555; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; margin-top: 2rem;">Propiedades</h2>
+
+      <div class="expandable-list">
+
+        <!-- Propiedad 1 -->
+        <li>
+          <div class="expandable-heading">Propiedad 1: Bernoulli de grado cero</div>
+          <div class="expandable-content" style="display: none;">
+            <p><strong>Enunciado:</strong></p><p> Todo polinomio de Bernoulli de grado 0 es igual a 1. </p>
+            <div class="formula">
+              $$B_0^n(x) = 1$$
+            </div>
+
+            <div class="pdf-viewer">
+              <iframe class="pdf-iframe" src="./AN/Bernoulli/Bernoulli_1.pdf"></iframe>
+            </div>
+          </div>
+        </li>
+
+        <!-- Propiedad 2 -->
+        <li>
+          <div class="expandable-heading">Propiedad 2: Bernoulli de orden cero</div>
+          <div class="expandable-content" style="display: none;">
+            <p><strong>Enunciado:</strong></p>
+            <div class="formula">
+              $$B_v^0(x) = x^v$$
+            </div>
+
+            <div class="pdf-viewer">
+              <iframe class="pdf-iframe" src="./AN/Bernoulli/Bernoulli_2.pdf"></iframe>
+            </div>
+          </div>
+        </li>
+
+        <!-- Propiedad 3 -->
+        <li>
+          <div class="expandable-heading">Propiedad 3: Derivada respecto a x</div>
+          <div class="expandable-content" style="display: none;">
+            <p><strong>Enunciado:</strong></p>
+            <div class="formula">
+              $$D B_v^n(x) = v B_{v-1}^n(x)$$
+            </div>
+
+            <div class="pdf-viewer">
+              <iframe class="pdf-iframe" src="./AN/Bernoulli/Bernoulli_3.pdf"></iframe>
+            </div>
+          </div>
+        </li>
+
+        <!-- Propiedad 4 -->
+        <li>
+          <div class="expandable-heading">Propiedad 4: Operador diferencia</div>
+          <div class="expandable-content" style="display: none;">
+            <p><strong>Enunciado:</strong></p>
+            <div class="formula">
+              $$\Delta B_v^n(x) = v B_{v-1}^{n-1}(x)$$
+            </div>
+
+            <div class="pdf-viewer">
+              <iframe class="pdf-iframe" src="./AN/Bernoulli/Bernoulli_4.pdf"></iframe>
+            </div>
+          </div>
+        </li>
+
+        <!-- Recurso 1 -->
+        <li>
+          <div class="expandable-heading">Integral de PB en [0;1]</div>
+          <div class="expandable-content" style="display: none;">
+            <div class="pdf-viewer">
+              <iframe class="pdf-iframe" src="./AN/Bernoulli/bernoulli-integral-01.pdf"></iframe>
+            </div>
+          </div>
+        </li>
+
+        <!-- Recurso 2 -->
+        <li>
+          <div class="expandable-heading">Relación complementaria de PB</div>
+          <div class="expandable-content" style="display: none;">
+            <div class="pdf-viewer">
+              <iframe class="pdf-iframe" src="./AN/Bernoulli/bernoulli-relacion-complementaria.pdf"></iframe>
+            </div>
+          </div>
+        </li>
+
+        <!-- Recurso 3 (Movido a sección Práctica) -->
+
+        <!-- Recurso 4 -->
+        <li>
+          <div class="expandable-heading">Recursividad Polinomios de Bernoulli orden 1</div>
+          <div class="expandable-content" style="display: none;">
+            <div class="pdf-viewer">
+              <iframe class="pdf-iframe" src="./AN/Bernoulli/bernoulli-recursivo-orden-1.pdf"></iframe>
+            </div>
+          </div>
+        </li>
+
+      </div>
+    </section>
+
+    <!-- Práctica -->
+    <section class="materia-section">
+      <h2 style="font-size: 0.9rem; font-weight: normal; font-family: system-ui, -apple-system, sans-serif; color: #555555; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; margin-top: 2rem;">Práctica</h2>
+
+      <div class="expandable-list">
+
+        <!-- Práctica -->
+        <li>
+          <div class="expandable-heading">Práctica: Polinomios de Bernoulli</div>
+          <div class="expandable-content" style="display: none;">
+            <div class="pdf-viewer">
+              <iframe class="pdf-iframe" src="./AN/Bernoulli/bernoulli-practica.pdf"></iframe>
+            </div>
+          </div>
+        </li>
+
+      </div>
+    </section>
+
+  </section>
+</main>
+
+<footer>
+  <a href="https://github.com/rafa-datri" target="_blank" rel="noopener">github</a>
+</footer>
+
+<script>
+  // Expandable list logic
+  document.querySelectorAll('.expandable-heading').forEach(heading => {
+    heading.addEventListener('click', function () {
+      const content = this.nextElementSibling;
+      const isExpanded = content.style.display === 'block';
+
+      // Close all other expandable contents
+      document.querySelectorAll('.expandable-content').forEach(el => {
+        el.style.display = 'none';
+      });
+
+      // Toggle current
+      if (!isExpanded) {
+        content.style.display = 'block';
+      }
+    });
+  });
+</script>
+
+<script src="../script.js"></script>
+</body>
+</html>

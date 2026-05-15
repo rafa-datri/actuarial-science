@@ -299,6 +299,8 @@ footer a:hover {
   margin: 1rem 0;
   border-radius: 3px;
   font-size: 0.9rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ── Index page (articles/exercises listing) ─────────── */
@@ -470,6 +472,14 @@ code {
   font-size: 0.9rem;
 }
 
+/* ── Inline formulas (with code styling, MathJax compatible) ── */
+.inline-formula {
+  background-color: #f0f0f0;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
 /* ── Materia sections ──────────────────────────────────── */
 .materia-section {
   margin-bottom: 2rem;
@@ -530,4 +540,76 @@ code {
 .exercise-content.expanded {
   max-height: 10000px;
   opacity: 1;
+}
+
+/* ── Sistema cards (Préstamos) ───────────────────────── */
+.sistema-card {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+
+.sistema-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--text);
+  transition: color 0.15s ease;
+  text-align: left;
+}
+
+.sistema-toggle:hover {
+  color: var(--link-hover);
+}
+
+.sistema-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+  margin-left: auto;
+}
+
+.sistema-title {
+  flex: 1;
+}
+
+.sistema-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.sistema-content.expanded {
+  max-height: 10000px;
+  opacity: 1;
+}
+
+.sistema-content .collapsible-description {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+/* ── Internal links ────────────────────────────────────── */
+.internal-link {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.internal-link:hover {
+  color: var(--link-hover);
+  text-decoration-thickness: 2px;
 }
