@@ -2,5 +2,5 @@ git init
 git remote add origin https://github.com/rafa-datri/actuarial-repository
 git pull origin main
 git add .
-git commit -m "new section - polinomios de bernoulli"
+git commit -m "faster load"
 git push origin main
